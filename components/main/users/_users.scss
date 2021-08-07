@@ -1,0 +1,15 @@
+.users {
+    background: rgba(242, 242, 242, .5);
+    height: 100vh;
+    padding: 1rem;
+    .user-lists {
+        .list {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            img {
+                margin-right: 1rem;
+            }
+        }
+    }
+}

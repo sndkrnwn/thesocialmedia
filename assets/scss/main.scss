@@ -1,0 +1,22 @@
+@import "~bootstrap/scss/functions"; // DO NOT EDIT
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Slick Carousel
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+// Components
+@import "../../assets/plugins/fontawesome-pro-5.13.0/css/all.min.css";
+@import "../../assets/plugins/fontawesome-pro-5.13.0/scss/fontawesome.scss";
+
+// Components
+@import "../../components/main/card/card";
+@import "../../components/main/cover/cover";
+@import "../../components/main/users/users";
+@import "../../components/main/activities/activities";
+
+
+.content-left {
+    padding-left: 3rem;
+}
