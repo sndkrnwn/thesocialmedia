@@ -102,7 +102,9 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
                         albums.length > 0 && albums.map((item, i)=>{
                             if(item.userId === userid) {
                                 return (
-                                    <div className="item" key={i} onClick={()=>openModal(item.id)}>{item.title}</div>
+                                    <div className="item" key={i} onClick={()=>openModal(item.id)}>
+                                        <span>{item.title}</span>
+                                    </div>
                                 )
                             }
                         })

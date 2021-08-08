@@ -16,6 +16,24 @@
 @import "../../components/main/users/users";
 @import "../../components/main/activities/activities";
 
+@font-face {
+    font-family: ubuntu;
+    src: url("../../assets/fonts/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+    font-family: helvetica;
+    src: url("../../assets/fonts/Helvetica.ttf");
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: ubuntu;
+}
+
+p, span, a, button {
+    font-family: helvetica !important;
+}
+
 
 .content-left {
     padding-left: 3rem;
