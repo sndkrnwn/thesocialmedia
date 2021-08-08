@@ -7,8 +7,9 @@ import { updateTest } from 'redux/actions/testAction';
 
 import { Card } from 'react-bootstrap';
 
-const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
+import Banner from "assets/img/bg/banner-card.jpg"
 
+const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
     //GET USER PROFILE
     const [user, setUser] = useState(null);
     useEffect(()=>{
@@ -54,7 +55,14 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
     return (
         <>
         <Card className="card-profile">
-            <Card.Header>
+            <Card.Header
+                style={{
+                    background: `url(${Banner.src}) no-repeat center`,
+                    // backgroundColor: "blue",
+                    backgroundSize: "cover",
+                    position: "relative",
+                }}
+            >
             {
                 user !== null &&
                 <>

@@ -4,8 +4,10 @@
     height: 150px;
     background: #f2f2f2;
     border-bottom: 10px solid #82CCDD;
+    background-size: cover !important;
     .cover-text {
         position: relative;
+        color: white;
         // z-index: 1;
     }
 }

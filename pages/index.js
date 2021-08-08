@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import { Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector, connect } from 'react-redux'
@@ -18,6 +18,10 @@ import { fetchphotos } from 'redux/actions/photoAction';
 import { fetchuseractive } from 'redux/actions/userActiveAction';
 
 import { fetchtest } from 'redux/actions/testAction';
+
+
+
+import Loader from "assets/img/icon/loading.gif"
 
 
 
@@ -55,8 +59,14 @@ export default function Home (props) {
     //Testing Store, Update
     dispatch(fetchtest());
   }, [])
+
+  const [loader, setLoader] = useState(true);
   return (
     <>
+      <div className={`loader ${loader === false && "is-close"}`}>
+        <img src={Loader.src} alt="loading-image" className="img-fluid"/>
+        <button className="btn btn-outline-primary" onClick={()=>setLoader(false)}>Start</button>
+      </div>
       <Cover
         title="The Social Media"
       />

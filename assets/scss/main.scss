@@ -34,6 +34,43 @@ p, span, a, button {
     font-family: helvetica !important;
 }
 
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1031;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 1;
+    visibility: visible;
+    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    &.is-close {
+        opacity: 0;
+        visibility: hidden;
+    }
+    img {
+        width: 65px;
+        margin-bottom: 1rem;
+    }
+    .btn {
+        font-size: 1.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        color:#82CCDD;
+        // border-color: #82CCDD;
+        border: none;
+        &:hover {
+            background: transparent;
+            text-shadow: 1px 1px 15px rgba(255,255,255, .5);;
+        }
+    }
+}
+
 
 .content-left {
     padding-left: 3rem;
