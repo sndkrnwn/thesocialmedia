@@ -16,6 +16,22 @@ export const postReducer = ( state = initialState, action) => {
                 error: null
             }
 
+        case types.ADD_POST_USER:
+            state.posts.unshift(action.value)
+            return {
+                ...state,
+                posts: state.posts
+            }
+            break;
+
+        case types.UPDATE_POST_USER:
+            let filterIndex = state.posts.findIndex((obj => obj.id == action.value.id));
+            state.posts[filterIndex].title = action.value.title
+            state.posts[filterIndex].body = action.value.body
+            return {
+                ...state
+            }
+
         case types.REMOVE_POST_USER:
             let id = action.value
             let posts = state.posts

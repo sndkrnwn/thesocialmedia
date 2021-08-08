@@ -1,20 +1,70 @@
+import * as types from "../../../redux/types"
 import { useState } from 'react'
 import PropTypes from "prop-types"
+import {default as UUID} from "node-uuid";
 // import Modal from 'react-modal';
 import { Modal } from 'react-bootstrap'
 
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
-const Comments = ({postId, comments, postTitle, postBody}) => {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+const Comments = ({postId, postTitle, postBody, comments, removeCommentPost, addComment, updateComment}) => {
+    const [trigger, setTrigger] = useState(0);
+    const [commmentId, setCommentId] = useState(0);
 
-    const [value, setValue] = useState("")
-    const onChange = (e) => {
-        setValue(e.target.value)
+    //ADD COMMENT
+    const [comment, setComment] = useState("");
+    const changeAddComment = (e) => {
+        setComment(e.target.value)
     }
+    const submitAddComment =  (postId) => {
+        const data = {
+            postId: postId,
+            id: UUID.v4(),
+            name: "John Doe",
+            email: "admin@thesocialmedia.com",
+            body: comment
+        }
+        addComment(data)
+        setTrigger(trigger+1)
+        setComment("")
+    }
+
+    //Modal Comment
+    const [show, setShow] = useState(false);
+    const handleClose = () => {
+        setShow(false)
+        setShowUpdate(false)
+    };
+    const handleShow = () => { 
+        setShow(true)
+        setShowUpdate(false)
+    };
+
+    //Modal Update Comment
+    const [commentTextUpdate, setTextUpdate] = useState("")
+    const [showUpdate, setShowUpdate] = useState(false);
+    const handleCloseUpdate = () => setShowUpdate(false);
+    const handleShowUpdate = (id) => {
+        setShowUpdate(true);
+        setShow(false)
+        setCommentId(id)
+    }
+    const changeCommentTextUpdate = (e) => {
+        setTextUpdate(e.target.value)
+    }
+    const submitUpdateComment = () => {
+        const data = {
+            postId: 1,
+            id: commmentId,
+            body: commentTextUpdate
+        }
+        updateComment(data)
+        setShow(true)
+        setTrigger(trigger+1)
+        setTextUpdate("")
+    }
+    
     return (
         <>
             <div className="toggle-comment d-flex justify-content-between">
@@ -42,11 +92,11 @@ const Comments = ({postId, comments, postTitle, postBody}) => {
                                                     <p className="mb-0">
                                                         {item.body}
                                                     </p>
-                                                    <textarea readOnly className="form-control d-none" id="exampleFormControlTextarea1" onChange={onChange} rows="3" value={item.body}>{item.body}</textarea>
+                                                    <textarea readOnly className="form-control d-none" id="comment" rows="3" value={item.body}>{item.body}</textarea>
                                                 </div>
                                                 <div className="action">
-                                                    <Button><i className="far fa-edit"></i></Button>
-                                                    <Button><i className="far fa-trash-alt"></i></Button>
+                                                    <Button onClick={() => handleShowUpdate(item.id)}><i className="far fa-edit"></i></Button>
+                                                    <Button onClick={() => { removeCommentPost(item.id); setTrigger(trigger+1);}}><i className="far fa-trash-alt"></i></Button>
                                                 </div>
                                             </div>
                                         )
@@ -54,14 +104,28 @@ const Comments = ({postId, comments, postTitle, postBody}) => {
                                 })
                             }
                         </div> 
-                        <form className="form-comment">
+                        <div className="form-comment">
                             <div className="form-group">
-                                <input className="form-control" placeholder="Add comment here..." />
-                                <button className="btn btn-post">
+                                <input className="form-control" value={comment} placeholder="Add comment here..." onChange={changeAddComment} />
+                                <button className="btn btn-post" onClick={()=>submitAddComment(postId)}>
                                     <i className="fal fa-paper-plane"></i>
                                 </button>
                             </div>
-                        </form>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            <Modal show={showUpdate} onHide={handleCloseUpdate} className="modal-comment">
+                <button onClick={handleCloseUpdate} className="toggle-close"><i className="fal fa-times"></i></button>
+                <Modal.Body>
+                    <h3>Update Comment</h3>
+                    <div className="form-update">
+                        <div className="form-group mb-3">
+                            <textarea className="form-control" rows="3" value={commentTextUpdate} id="commentTextUpdate" onChange={changeCommentTextUpdate} placeholder="update comment here..."></textarea>
+                        </div>
+                        <div className="form-group w-100 mb-3">
+                            <Button className="btn-primary w-100" onClick={() => { submitUpdateComment(); setTrigger(trigger+1);}}>Save & Update</Button> 
+                        </div>
                     </div>
                 </Modal.Body>
             </Modal>
@@ -88,4 +152,28 @@ Comments.defaultProps = {
     ],
 }
 
-export default Comments
+// export default Comments
+
+const mapStateToProps = state => ({
+    comments: state.comment.comments,
+});
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removeCommentPost: (id) => dispatch({
+            type: types.REMOVE_COMMENT_POST,
+            value: id
+        }),
+        addComment: (data) => dispatch({
+            type: types.ADD_COMMENTS,
+            value: data
+        }),
+        updateComment: (data) => dispatch({
+            type: types.UPDATE_COMMENT,
+            value: data
+        }),
+    }
+}
+
+export default connect(
+    mapStateToProps, mapDispatchToProps)(Comments);

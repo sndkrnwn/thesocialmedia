@@ -4,13 +4,12 @@ import PropTypes from "prop-types"
 import Modal from 'react-modal';
 import Slider from "react-slick";
 import { connect } from 'react-redux'
-// import { updateTest } from 'redux/actions/testAction';
 
 import { Card } from 'react-bootstrap';
 
 import Banner from "assets/img/bg/banner-card.jpg"
 
-const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
+const CardProfile = ({userid, users, albums, photos}) => {
     const [user, setUser] = useState(null);
     useEffect(()=>{
         users.map((item, i)=>{
@@ -49,10 +48,6 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
         slidesToScroll: 1
       };
 
-    const handleClick = () => {
-        updateTest();
-    }
-
     return (
         <>
         <Card className="card-profile">
@@ -69,8 +64,6 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
                 <>
                 <h3>{user.name}</h3>
                 <p className="mb-0">@{user.username}</p>
-                <p>test{test.test}</p>
-                <button onClick={handleClick}>test</button>
                 </>
             }
             </Card.Header>
@@ -162,26 +155,12 @@ CardProfile.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    test: state.test,
     userid: state.userid.userid,
     users: state.user.users,
     albums: state.album.albums,
     photos: state.photo.photos
 });
   
-const mapDispatchToProps = (dispatch) => {
-    return {
-    //    updateTest: () => {
-    //       dispatch(updateTest())
-    //    }
-        updateTest: () => dispatch({
-            type: types.UPDATE_TEST,
-            value: 1
-        })
-    }
-}
-  
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps)(CardProfile);
+    mapStateToProps)(CardProfile);
   
