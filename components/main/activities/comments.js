@@ -67,7 +67,7 @@ export const Comments = ({postId, comments, postTitle, postBody}) => {
                         </div> 
                         <form className="form-comment">
                             <div className="form-group">
-                                <input className="form-control" placeholder="Comment here" />
+                                <input className="form-control" placeholder="Add comment here..." />
                                 <button className="btn btn-post">
                                     <i className="fal fa-paper-plane"></i>
                                 </button>

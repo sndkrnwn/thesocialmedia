@@ -51,11 +51,10 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
     const handleClick = () => {
         updateTest();
     }
-    const data = ["Sincere@april.biz", "1-770-736-8031", "Kulas Light, Apt. 556, Gwenborough", "Romaguera-Crona", "hildegard.org"]
     return (
         <>
         <Card className="card-profile">
-            <Card.Header className="text-center">
+            <Card.Header>
             {
                 user !== null &&
                 <>
@@ -74,10 +73,24 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
                     user !== null &&
                     <div className="list-item">
                         <div className="item">
-                            <p>Email: {user.email}</p>
-                            <p>Phone: {user.phone}</p>
-                            <p>Address: {user.address.street} {user.address.suite} {user.address.city}</p>
-                            <p>Website: {user.website}</p>
+                            <a href={`mailto:${user.email}`} target="__blank">
+                                <i class="fad fa-envelope"></i><p>{user.email}</p>
+                            </a>
+                        </div>
+                        <div className="item">
+                            <a href={`tel:${user.phone}`} target="__blank">
+                                <i class="fad fa-phone"></i><p>{user.phone}</p>
+                            </a>
+                        </div>
+                        <div className="item">
+                            <a href={`https://maps.google.com/?q=${user.address.geo.lat},${user.address.geo.lng}`} target="__blank">
+                                <i class="fad fa-address-card"></i><p>{user.address.street} {user.address.suite} {user.address.city}</p>
+                            </a>
+                        </div>
+                        <div className="item">
+                            <a href={` https://${user.website}`} target="__blank">
+                                <i class="fad fa-browser"></i><p>{user.website}</p>
+                            </a>
                         </div>
                     </div>
                 }

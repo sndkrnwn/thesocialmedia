@@ -1,3 +1,44 @@
 .card-profile {
     margin-top: 3rem;
+    .card-header {
+        background: white;
+    }
+    .card-body {
+        h4 {
+            color: #82CCDD;
+        }
+        .list-item {
+            .item {
+                cursor: default;
+                margin-bottom: 1rem;
+                a {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: black;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &:hover {
+                    i {
+                        color: #82CCDD;
+                        transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                    }
+                }
+                p {
+                    font-size: 1rem;
+                    margin-bottom: 0;
+                }
+                i {
+                    font-size: 2rem;
+                    min-width: 50px;
+                    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                }
+            }
+        }
+    }
+    .card-footer {
+        background: white;
+    }
 }

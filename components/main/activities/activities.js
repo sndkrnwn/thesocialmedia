@@ -9,7 +9,7 @@ export const Activities = ({userid, posts, comments}) => {
                 <h3 className="text-center">Activities</h3>
                 <form className="form-post">
                     <div className="form-group">
-                        <input className="form-control" placeholder="Comment here" />
+                        <input className="form-control" placeholder="Add post here..." />
                         <button className="btn btn-post">
                             <i className="fal fa-paper-plane"></i>
                         </button>
