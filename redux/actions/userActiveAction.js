@@ -5,9 +5,6 @@ export const fetchuseractive  = () => async dispatch => {
     dispatch({
         type: types.GET_USER_ACTIVE,
         //dummy
-        payload: 5
+        payload: 1
     })
 }
-
-
-export const updateUserActive = () => ({ type: types.UPDATE_USER_ACTIVE }) 

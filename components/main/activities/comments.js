@@ -4,11 +4,9 @@ import PropTypes from "prop-types"
 import { Modal } from 'react-bootstrap'
 
 import { Button } from 'react-bootstrap'
-export const Comments = ({postId, comments, postTitle, postBody}) => {
-    // const [modalIsOpen, setIsOpen] = useState(false);
-    // const handleModal = () => {
-    //     setIsOpen(!modalIsOpen)
-    // }
+import { connect } from 'react-redux'
+
+const Comments = ({postId, comments, postTitle, postBody}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -17,16 +15,6 @@ export const Comments = ({postId, comments, postTitle, postBody}) => {
     const onChange = (e) => {
         setValue(e.target.value)
     }
-    const customStyles = {
-        content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-        },
-    };
     return (
         <>
             <div className="toggle-comment d-flex justify-content-between">
@@ -99,3 +87,5 @@ Comments.defaultProps = {
         },
     ],
 }
+
+export default Comments

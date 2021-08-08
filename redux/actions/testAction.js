@@ -5,9 +5,6 @@ export const fetchtest  = () => async dispatch => {
     dispatch({
         type: types.GET_TEST,
         //dummy
-        payload: true
+        payload: 1
     })
 }
-
-
-export const updateTest = () => ({ type: types.UPDATE_TEST }) 

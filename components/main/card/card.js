@@ -1,16 +1,16 @@
+import * as types from "../../../redux/types"
 import { useState, useEffect } from 'react'
 import PropTypes from "prop-types"
 import Modal from 'react-modal';
 import Slider from "react-slick";
 import { connect } from 'react-redux'
-import { updateTest } from 'redux/actions/testAction';
+// import { updateTest } from 'redux/actions/testAction';
 
 import { Card } from 'react-bootstrap';
 
 import Banner from "assets/img/bg/banner-card.jpg"
 
 const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
-    //GET USER PROFILE
     const [user, setUser] = useState(null);
     useEffect(()=>{
         users.map((item, i)=>{
@@ -18,7 +18,7 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
                setUser(item)
             }
         })
-    }, [users])
+    })
 
     //MODAL PHOTO
     const [albumId, setAlbumId] = useState(null);
@@ -52,6 +52,7 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
     const handleClick = () => {
         updateTest();
     }
+
     return (
         <>
         <Card className="card-profile">
@@ -68,12 +69,10 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
                 <>
                 <h3>{user.name}</h3>
                 <p className="mb-0">@{user.username}</p>
-                {/* <p>{test &&  "test 123"}</p>
-                <button onClick={handleClick}>test</button> */}
+                <p>test{test.test}</p>
+                <button onClick={handleClick}>test</button>
                 </>
             }
-            
-
             </Card.Header>
             <Card.Body>
                 <h4>Bio</h4>
@@ -163,18 +162,26 @@ CardProfile.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    test: state.test
-  });
+    test: state.test,
+    userid: state.userid.userid,
+    users: state.user.users,
+    albums: state.album.albums,
+    photos: state.photo.photos
+});
   
-  const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-       updateTest: () => {
-          dispatch(updateTest())
-       }
+    //    updateTest: () => {
+    //       dispatch(updateTest())
+    //    }
+        updateTest: () => dispatch({
+            type: types.UPDATE_TEST,
+            value: 1
+        })
     }
-  }
+}
   
-  export default connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps)(CardProfile);
   

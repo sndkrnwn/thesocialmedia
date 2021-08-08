@@ -79,6 +79,18 @@ p, span, a, button {
     }
 }
 
+.btn-primary {
+    background: #82CCDD;
+    color: white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: transparent;
+    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    &:hover {
+        background: #73c6d9;
+    }
+}
+
 
 .content-left {
     padding-left: 3rem;

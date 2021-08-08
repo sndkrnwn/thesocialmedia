@@ -1,6 +1,6 @@
 import * as types from "../types"
 const initialState = {
-    userid: 5,
+    userid: 1
 }
 export const userActiveReducer = ( state = initialState, action) => {
     switch(action.type) {
@@ -10,10 +10,11 @@ export const userActiveReducer = ( state = initialState, action) => {
                 userid: action.payload,
             };
 
-        case types.UPDATE_USER_ACTIE:
+        case types.UPDATE_USER_ACTIVE:
+            // console.log(action.value)
             return {
                 ...state,
-                userid: 2
+                userid: action.value
             };
 
             // return {

@@ -1,6 +1,12 @@
+import { useEffect } from 'react'
 import PropTypes from "prop-types"
+import * as types from "../../../redux/types"
+import { connect } from 'react-redux'
 
-export const Users = ({users, userid}) => {
+const Users = ({users, userid, updateUserActive}) => {
+    const handleClick = (id) => {
+        updateUserActive(id);
+    }
     return (
         <div className="users">
             <h3 className="text-center">Users</h3>
@@ -8,7 +14,7 @@ export const Users = ({users, userid}) => {
                 {
                     users.length > 0 && users.map((item, i)=>{
                         return (
-                            <div className={`list ${item.id === userid && 'active'}`} key={i}>
+                            <div className={`list ${item.id === userid.userid && 'active'}`} key={i} onClick={()=>handleClick(item.id)}>
                                 {/* <img src="" alt="user-image" className="img-fluid" /> */}
                                 <div className="id">
                                     <p className="mb-0">{item.name}</p>
@@ -39,3 +45,23 @@ Users.defaultProps = {
         },
     ],
 }
+
+// export default Users
+
+const mapStateToProps = state => ({
+    userid: state.userid,
+    users: state.user.users
+});
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateUserActive: (id) => dispatch({
+            type: types.UPDATE_USER_ACTIVE,
+            value: id
+        })
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps)(Users);
