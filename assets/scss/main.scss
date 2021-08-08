@@ -20,3 +20,53 @@
 .content-left {
     padding-left: 3rem;
 }
+
+.ReactModalPortal {
+    .ReactModal__Overlay {
+        .ReactModal__Content {
+            height: 500px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 2px 2px 15px rgba(0,0,0, .25);
+            @include media-breakpoint-up(md) {
+                width: 550px;
+            }
+            .toggle-close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: transparent;
+                border: none;
+                font-size: 2rem;
+                color: rgba(0,0,0,.5);
+            }
+            .post-comment {
+                .list-comment {
+                    margin-bottom: 1rem;
+                    .user {
+                        span {
+                            font-weight: bold;
+                            color: rgba(0,0,0,.5);
+                        }
+                    }
+                    .comment {
+                        margin-bottom: 1rem;
+                        textarea {
+                            padding: 0;
+                            border: none;
+                        }
+                    }
+                    .action {
+                        display: flex;
+                        justify-content: flex-end;
+                        .btn {
+                            background: transparent;
+                            color: black;
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

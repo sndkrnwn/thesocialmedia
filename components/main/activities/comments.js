@@ -1,54 +1,75 @@
 import { useState } from 'react'
 import PropTypes from "prop-types"
+import Modal from 'react-modal';
 
 import { Button } from 'react-bootstrap'
-export const Comments = ({comments}) => {
+export const Comments = ({postId, comments, postTitle, postBody}) => {
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const handleModal = () => {
+        setIsOpen(!modalIsOpen)
+    }
     const [value, setValue] = useState("")
     const onChange = (e) => {
         setValue(e.target.value)
     }
-    const data = [
-        {
-            name: "id labore ex et quam laborum",
-            email: "Eliseo@gardner.biz",
-            comment: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+    const customStyles = {
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
         },
-        {
-            name: "id labore ex et quam laborum",
-            email: "Eliseo@gardner.biz",
-            comment: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
-        },
-        {
-            name: "id labore ex et quam laborum",
-            email: "Eliseo@gardner.biz",
-            comment: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
-        },   
-    ]
+    };
     return (
-        <div className="comment-box">
-            <h5>Comment</h5>
-            <div className="post-comment">
-                {
-                    data.length > 0 && data.map((item, i)=>{
-                        return (
-                            <div className="list-comment" key={i}>
-                                <div className="user">
-                                    <p className="mb-0">{item.name}</p>
-                                    <span>{item.email}</span>
-                                </div>
-                                <div className="comment">
-                                    <input value={item.comment} onChange={onChange} />
-                                </div>
-                                <div className="action">
-                                    <Button>Edit</Button>
-                                    <Button>Delete</Button>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
+        <>
+            <div className="toggle-comment d-flex justify-content-between">
+                <button onClick={handleModal} className="btn">Comment</button>
             </div>
-        </div>
+            <Modal
+                isOpen={modalIsOpen}
+                // onAfterOpen={afterOpenModal}
+                onRequestClose={handleModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+            >
+                <div className="modal-comment">
+                    <button onClick={handleModal} className="toggle-close"><i className="fal fa-times"></i></button>
+                    <div className="user-post">
+                        <h4>{postTitle}</h4>
+                        <p>{postBody}</p>
+                    </div>
+                    <div className="post-comment">
+                        <p className="font-weight-bold mb-0">Comment</p>
+                        <div className="modal-body">
+                            <div className="post-comment">
+                                {
+                                    comments.length > 0 && comments.map((item, i)=>{
+                                        if(item.postId === postId) {
+                                            return (
+                                                <div className="list-comment" key={i}>
+                                                    <div className="user">
+                                                        <span>{item.email}</span>
+                                                    </div>
+                                                    <div className="comment">
+                                                        <textarea readOnly className="form-control" id="exampleFormControlTextarea1" onChange={onChange} rows="3" value={item.body}>{item.body}</textarea>
+                                                    </div>
+                                                    <div className="action">
+                                                        <Button><i className="far fa-edit"></i></Button>
+                                                        <Button><i className="far fa-trash-alt"></i></Button>
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    })
+                                }
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </Modal>
+        </>
     )
 }
 

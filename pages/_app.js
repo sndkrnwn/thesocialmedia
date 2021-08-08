@@ -8,11 +8,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
     <Provider store={store}>
-      {/* <Head>
-        <title>The Social Media</title>
-        <link rel="shortcut icon" href="" />
-      </Head> */}
-      <Component {...pageProps} /> 
+      <>
+        <Head>
+          <title>The Social Media</title>
+          <link rel="shortcut icon" href="" />
+        </Head>
+        <Component {...pageProps} /> 
+      </>
     </Provider>
     </>
   );
