@@ -30,6 +30,7 @@ export const Comments = ({postId, comments, postTitle, postBody}) => {
             <Modal
                 isOpen={modalIsOpen}
                 // onAfterOpen={afterOpenModal}
+                ariaHideApp={false}
                 onRequestClose={handleModal}
                 style={customStyles}
                 contentLabel="Example Modal"
@@ -40,32 +41,38 @@ export const Comments = ({postId, comments, postTitle, postBody}) => {
                         <h4>{postTitle}</h4>
                         <p>{postBody}</p>
                     </div>
-                    <div className="post-comment">
+                    <div className="user-comment">
                         <p className="font-weight-bold mb-0">Comment</p>
-                        <div className="modal-body">
-                            <div className="post-comment">
-                                {
-                                    comments.length > 0 && comments.map((item, i)=>{
-                                        if(item.postId === postId) {
-                                            return (
-                                                <div className="list-comment" key={i}>
-                                                    <div className="user">
-                                                        <span>{item.email}</span>
-                                                    </div>
-                                                    <div className="comment">
-                                                        <textarea readOnly className="form-control" id="exampleFormControlTextarea1" onChange={onChange} rows="3" value={item.body}>{item.body}</textarea>
-                                                    </div>
-                                                    <div className="action">
-                                                        <Button><i className="far fa-edit"></i></Button>
-                                                        <Button><i className="far fa-trash-alt"></i></Button>
-                                                    </div>
+                        <div className="post-comment">
+                            {
+                                comments.length > 0 && comments.map((item, i)=>{
+                                    if(item.postId === postId) {
+                                        return (
+                                            <div className="list-comment" key={i}>
+                                                <div className="user">
+                                                    <span>{item.email}</span>
                                                 </div>
-                                            )
-                                        }
-                                    })
-                                }
-                            </div> 
-                        </div>
+                                                <div className="comment">
+                                                    <textarea readOnly className="form-control" id="exampleFormControlTextarea1" onChange={onChange} rows="3" value={item.body}>{item.body}</textarea>
+                                                </div>
+                                                <div className="action">
+                                                    <Button><i className="far fa-edit"></i></Button>
+                                                    <Button><i className="far fa-trash-alt"></i></Button>
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                })
+                            }
+                        </div> 
+                        <form className="form-comment">
+                            <div className="form-group">
+                                <input className="form-control" placeholder="Comment here" />
+                                <button className="btn btn-post">
+                                    <i className="fal fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </Modal>

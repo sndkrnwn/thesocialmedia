@@ -41,6 +41,9 @@
                 color: rgba(0,0,0,.5);
             }
             .post-comment {
+                max-height: 280px;
+                overflow-y: scroll;
+                padding-bottom: 2rem;
                 .list-comment {
                     margin-bottom: 1rem;
                     .user {
@@ -67,6 +70,42 @@
                     }
                 }
             }
+            .form-comment {
+                position: fixed;
+                left: 0;
+                width: 100%;
+                bottom: 0;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                background: white;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                .form-group {
+                    position: relative;
+                    .btn-post {
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        background: #82CCDD;
+                        color: white;
+                        border-top-left-radius: 0;
+                        border-bottom-left-radius: 0;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                    }
+                }
+            }
         }
     }
+}
+
+.sc-profile {
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.sc-activities {
+    height: 100vh;
+    overflow: hidden;
 }

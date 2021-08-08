@@ -1,16 +1,41 @@
 .activities {
-    max-height: 800px;
-    overflow: hidden;
-    overflow-y: scroll;
     margin-top: 3rem;
+    .form-post {
+        .form-group {
+            position: relative;
+            .btn-post {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: #82CCDD;
+                color: white;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    }
     .toggle-comment {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
     .user-posts {
+        max-height: 800px;
+        overflow: hidden;
+        overflow-y: scroll;
         .list-post {
             margin-bottom: 1.5rem;
+            .action {
+                display: flex;
+                justify-content: space-between;
+                .btn {
+                    background: transparent;
+                    color: black;
+                    border: none;
+                }
+            }
         }
     }
 }

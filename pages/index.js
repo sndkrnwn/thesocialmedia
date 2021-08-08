@@ -63,7 +63,7 @@ export default function Home (props) {
       <Row>
         <Col md="9" className="content-left">
           <Row>
-            <Col md="4">
+            <Col md="4" className="sc-profile">
                 <CardProfile 
                   userid={userid}
                   users={users}
@@ -72,7 +72,7 @@ export default function Home (props) {
                   test={test}
                 />
             </Col>
-            <Col md="8">
+            <Col md="8" className="sc-activities">
                 <Activities 
                   userid={userid}
                   posts={posts}

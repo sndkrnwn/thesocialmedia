@@ -100,6 +100,7 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
             <Modal
                 isOpen={modalIsOpen}
                 // onAfterOpen={afterOpenModal}
+                ariaHideApp={false}
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
