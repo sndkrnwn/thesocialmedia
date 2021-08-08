@@ -1,13 +1,18 @@
 import { useState } from 'react'
 import PropTypes from "prop-types"
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
+import { Modal } from 'react-bootstrap'
 
 import { Button } from 'react-bootstrap'
 export const Comments = ({postId, comments, postTitle, postBody}) => {
-    const [modalIsOpen, setIsOpen] = useState(false);
-    const handleModal = () => {
-        setIsOpen(!modalIsOpen)
-    }
+    // const [modalIsOpen, setIsOpen] = useState(false);
+    // const handleModal = () => {
+    //     setIsOpen(!modalIsOpen)
+    // }
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const [value, setValue] = useState("")
     const onChange = (e) => {
         setValue(e.target.value)
@@ -25,18 +30,11 @@ export const Comments = ({postId, comments, postTitle, postBody}) => {
     return (
         <>
             <div className="toggle-comment d-flex justify-content-between">
-                <button onClick={handleModal} className="btn">Comment</button>
+                <button onClick={handleShow} className="btn">Comment</button>
             </div>
-            <Modal
-                isOpen={modalIsOpen}
-                // onAfterOpen={afterOpenModal}
-                ariaHideApp={false}
-                onRequestClose={handleModal}
-                style={customStyles}
-                contentLabel="Example Modal"
-            >
-                <div className="modal-comment">
-                    <button onClick={handleModal} className="toggle-close"><i className="fal fa-times"></i></button>
+            <Modal show={show} onHide={handleClose} className="modal-comment">
+                <button onClick={handleClose} className="toggle-close"><i className="fal fa-times"></i></button>
+                <Modal.Body>
                     <div className="user-post">
                         <h4>{postTitle}</h4>
                         <p>{postBody}</p>
@@ -53,7 +51,10 @@ export const Comments = ({postId, comments, postTitle, postBody}) => {
                                                     <span>{item.email}</span>
                                                 </div>
                                                 <div className="comment">
-                                                    <textarea readOnly className="form-control" id="exampleFormControlTextarea1" onChange={onChange} rows="3" value={item.body}>{item.body}</textarea>
+                                                    <p className="mb-0">
+                                                        {item.body}
+                                                    </p>
+                                                    <textarea readOnly className="form-control d-none" id="exampleFormControlTextarea1" onChange={onChange} rows="3" value={item.body}>{item.body}</textarea>
                                                 </div>
                                                 <div className="action">
                                                     <Button><i className="far fa-edit"></i></Button>
@@ -74,7 +75,7 @@ export const Comments = ({postId, comments, postTitle, postBody}) => {
                             </div>
                         </form>
                     </div>
-                </div>
+                </Modal.Body>
             </Modal>
         </>
     )

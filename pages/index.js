@@ -83,6 +83,7 @@ export default function Home (props) {
         </Col>
         <Col md="3" className="content-right">
           <Users 
+            userid={userid}
             users={users}
           />
         </Col>

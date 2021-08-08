@@ -20,6 +20,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        border-bottom: 2px solid #82CCDD; 
+        .btn {
+            padding-left: 0;
+            padding-right: 0;
+            color: rgba(0,0,0,.5) !important;
+            font-weight: bold;
+        }
     }
     .user-posts {
         max-height: 800px;

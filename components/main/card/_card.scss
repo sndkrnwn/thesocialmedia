@@ -1,7 +1,9 @@
 .card-profile {
     margin-top: 3rem;
+    padding: 0;
     .card-header {
         background: white;
+        padding: 1rem;
     }
     .card-body {
         h4 {
@@ -40,5 +42,27 @@
     }
     .card-footer {
         background: white;
+        padding: 0;
+        h4 {
+            color: #82CCDD;
+        }
+        .list-item {
+            .item {
+                padding: 1rem;
+                cursor: pointer;
+                transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                &:nth-child(odd) {
+                    background: #f2f2f2;
+                    &:hover {
+                        background: #e6e6e6;
+                    }
+                }
+                &:nth-child(even) {
+                    &:hover {
+                        background: #f2f2f2;
+                    }
+                }
+            }
+        }
     }
 }

@@ -2,11 +2,31 @@
     background: rgba(242, 242, 242, .5);
     height: 100vh;
     padding: 1rem;
+    overflow: hidden;
+    overflow-y: scroll;
     .user-lists {
         .list {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
+            border: 1px solid rgba(0,0,0,.25);
+            padding: .25rem;
+            border-radius: 12px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            cursor: pointer;
+            transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+            &.active {
+                background: #82CCDD;
+                color: white;
+                border: 1px solid transparent;
+            }
+            &:hover {
+                transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                background: #82CCDD;
+                color: white;
+                border: 1px solid transparent;
+            }
             img {
                 margin-right: 1rem;
             }

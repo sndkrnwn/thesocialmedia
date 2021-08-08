@@ -58,8 +58,8 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
             {
                 user !== null &&
                 <>
-                <p className="mb-0">@{user.username}</p>
                 <h3>{user.name}</h3>
+                <p className="mb-0">@{user.username}</p>
                 {/* <p>{test &&  "test 123"}</p>
                 <button onClick={handleClick}>test</button> */}
                 </>
@@ -74,35 +74,35 @@ const CardProfile = ({userid, users, albums, photos, test, updateTest}) => {
                     <div className="list-item">
                         <div className="item">
                             <a href={`mailto:${user.email}`} target="__blank">
-                                <i class="fad fa-envelope"></i><p>{user.email}</p>
+                                <i className="fad fa-envelope"></i><p>{user.email}</p>
                             </a>
                         </div>
                         <div className="item">
                             <a href={`tel:${user.phone}`} target="__blank">
-                                <i class="fad fa-phone"></i><p>{user.phone}</p>
+                                <i className="fad fa-phone"></i><p>{user.phone}</p>
                             </a>
                         </div>
                         <div className="item">
                             <a href={`https://maps.google.com/?q=${user.address.geo.lat},${user.address.geo.lng}`} target="__blank">
-                                <i class="fad fa-address-card"></i><p>{user.address.street} {user.address.suite} {user.address.city}</p>
+                                <i className="fad fa-address-card"></i><p>{user.address.street} {user.address.suite} {user.address.city}</p>
                             </a>
                         </div>
                         <div className="item">
                             <a href={` https://${user.website}`} target="__blank">
-                                <i class="fad fa-browser"></i><p>{user.website}</p>
+                                <i className="fad fa-browser"></i><p>{user.website}</p>
                             </a>
                         </div>
                     </div>
                 }
             </Card.Body>
             <Card.Footer>
-                <h4>Album</h4>
+                <h4 className="p-3">Album</h4>
                 <div className="list-item">
                     {
                         albums.length > 0 && albums.map((item, i)=>{
                             if(item.userId === userid) {
                                 return (
-                                    <p key={i} onClick={()=>openModal(item.id)}>{item.title}</p>
+                                    <div className="item" key={i} onClick={()=>openModal(item.id)}>{item.title}</div>
                                 )
                             }
                         })
