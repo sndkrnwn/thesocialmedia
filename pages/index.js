@@ -67,37 +67,39 @@ export default function Home (props) {
         <img src={Loader.src} alt="loading-image" className="img-fluid"/>
         <button className="btn btn-outline-primary" onClick={()=>setLoader(false)}>Start</button>
       </div>
-      <Cover
-        title="The Social Media"
-      />
-      <Row>
-        <Col md="9" className="content-left">
-          <Row>
-            <Col md="4" className="sc-profile">
-                <CardProfile 
-                  userid={userid}
-                  users={users}
-                  albums={albums}
-                  photos={photos}
-                  test={test}
-                />
-            </Col>
-            <Col md="8" className="sc-activities">
-                <Activities 
-                  userid={userid}
-                  posts={posts}
-                  comments={comments}
-                />
-            </Col>
-          </Row>
-        </Col>
-        <Col md="3" className="content-right">
-          <Users 
-            userid={userid}
-            users={users}
-          />
-        </Col>
-      </Row>
+      <div className={`main-content ${loader === false && "loaded"}`}>
+        <Cover
+          title="The Social Media"
+        />
+        <Row>
+          <Col md="9" className="content-left">
+            <Row>
+              <Col md="4" className="sc-profile">
+                  <CardProfile 
+                    userid={userid}
+                    users={users}
+                    albums={albums}
+                    photos={photos}
+                    test={test}
+                  />
+              </Col>
+              <Col md="8" className="sc-activities">
+                  <Activities 
+                    userid={userid}
+                    posts={posts}
+                    comments={comments}
+                  />
+              </Col>
+            </Row>
+          </Col>
+          <Col md="3" className="content-right">
+            <Users 
+              userid={userid}
+              users={users}
+            />
+          </Col>
+        </Row>  
+      </div>
     </>
   )
 }

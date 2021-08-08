@@ -71,6 +71,14 @@ p, span, a, button {
     }
 }
 
+.main-content {
+    opacity: 0;
+    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    &.loaded {
+        opacity: 1;
+    }
+}
+
 
 .content-left {
     padding-left: 3rem;
