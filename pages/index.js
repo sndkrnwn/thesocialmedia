@@ -42,11 +42,17 @@ export default function Home (props) {
   }, [])
 
   const [loader, setLoader] = useState(true);
+  const [userMobile, setUserMobile] = useState(false);
   return (
     <>
       <div className={`loader ${loader === false && "is-close"}`}>
         <img src={Loader.src} alt="loading-image" className="img-fluid"/>
         <button className="btn outline" onClick={()=>setLoader(false)}>Start</button>
+      </div>
+      <div className="toggle-users-mobile" onClick={()=>setUserMobile(!userMobile)}>
+        {
+          userMobile ? <i className="fad fa-times"></i> : <i class="fad fa-users"></i>
+        }
       </div>
       <div className={`main-content ${loader === false && "loaded"}`}>
         <Cover
@@ -59,12 +65,12 @@ export default function Home (props) {
                   <CardProfile />
               </Col>
               <Col md="8" className="sc-activities">
-                  <Activities />
+                  <Activities userMobile={userMobile}/>
               </Col>
             </Row>
           </Col>
-          <Col md="3" className="content-right">
-            <Users />
+          <Col md="3" className={`content-right ${userMobile && "is-open"}`}>
+            <Users userMobile={userMobile} setUserMobile={setUserMobile} userMobile={userMobile}/>
           </Col>
         </Row>  
       </div>
