@@ -10,9 +10,7 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
     const [idPost, setIdPost] = useState(0);
     const [idPostUpdate, setIdPostUpdate] = useState(0);
 
-    const [triggerRemove, setTriggerRemove] = useState(0)
-    const [triggerPost, setTriggerPost] = useState(0);
-    const [triggerUpdatePost, setTriggerUpdatePost] = useState(0);
+    const [trigger, setTrigger] = useState(0);
 
     //Remove Popup
     const [showModalRemove, setShowModalRemove] = useState(false);
@@ -49,7 +47,7 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
             body: postDesc
         }
         addPostUser(data);
-        setTriggerPost(triggerPost+1)
+        setTrigger(trigger+1)
         setPostTitle("")
         setPostDesc("")
     }
@@ -80,7 +78,7 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
     //REMOVE POST
     const handleSubmitRemove = () => {
         setShowModalRemove(false);
-        setTriggerRemove(triggerRemove+1)
+        setTrigger(trigger+1)
         removePostUser(idPost)
     }
 
@@ -166,7 +164,7 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
                             <textarea className="form-control" rows="3" value={postTextUpdate} onChange={changePostTextUpdate} placeholder="update post here..."></textarea>
                         </div>
                         <div className="form-group w-100 mb-3">
-                            <Button className="btn-primary w-100" onClick={() => { submitUpdatePost(); setTriggerUpdatePost(triggerUpdatePost+1);}}>Save & Post</Button> 
+                            <Button className="btn-primary w-100" onClick={() => { submitUpdatePost(); setTrigger(trigger+1);}}>Save & Post</Button> 
                         </div>
                     </div>
                 </Modal.Body>
