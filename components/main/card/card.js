@@ -1,7 +1,7 @@
 import * as types from "../../../redux/types"
 import { useState, useEffect } from 'react'
 import PropTypes from "prop-types"
-import Modal from 'react-modal';
+import { Modal } from 'react-bootstrap'
 import Slider from "react-slick";
 import { connect } from 'react-redux'
 
@@ -10,6 +10,17 @@ import { Card } from 'react-bootstrap';
 import Banner from "assets/img/bg/banner-card.jpg"
 
 const CardProfile = ({userid, users, albums, photos}) => {
+    const [show, setShow] = useState(false)
+    const handleClose = () => {
+        setShow(false)
+    }
+    const [albumPhoto, setAlbumPhoto] = useState([]);
+    const handleOpen = (id) => {
+        let newItems =  photos.filter(x => x.albumId === id);
+        setAlbumPhoto(newItems)
+        setShow(true)
+    }
+
     const [user, setUser] = useState(null);
     useEffect(()=>{
         users.map((item, i)=>{
@@ -18,30 +29,9 @@ const CardProfile = ({userid, users, albums, photos}) => {
             }
         })
     })
-
-    //MODAL PHOTO
-    const [albumId, setAlbumId] = useState(null);
-    const [modalIsOpen, setIsOpen] = useState(false);
-    const closeModal = () => {
-        setIsOpen(false)
-    }
-    const openModal = (id) => {
-        setIsOpen(true)
-    }
-    const customStyles = {
-        content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-        },
-    };
-
     //Handle Slider Photo
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -102,7 +92,7 @@ const CardProfile = ({userid, users, albums, photos}) => {
                         albums.length > 0 && albums.map((item, i)=>{
                             if(item.userId === userid) {
                                 return (
-                                    <div className="item" key={i} onClick={()=>openModal(item.id)}>
+                                    <div className="item" key={i} onClick={()=>handleOpen(item.id)}>
                                         <span>{item.title}</span>
                                     </div>
                                 )
@@ -112,37 +102,23 @@ const CardProfile = ({userid, users, albums, photos}) => {
                 </div>
             </Card.Footer>
         </Card>
-            <Modal
-                isOpen={modalIsOpen}
-                // onAfterOpen={afterOpenModal}
-                ariaHideApp={false}
-                onRequestClose={closeModal}
-                style={customStyles}
-                contentLabel="Example Modal"
-            >
-                <div className="modal-photo">
-                    <button onClick={closeModal} className="toggle-close"><i className="fal fa-times"></i></button>
-                    {/* <Slider {...settings}>
-                        <div>
-                            <h3>1</h3>
-                        </div>
-                        <div>
-                            <h3>2</h3>
-                        </div>
-                        <div>
-                            <h3>3</h3>
-                        </div>
-                        <div>
-                            <h3>4</h3>
-                        </div>
-                        <div>
-                            <h3>5</h3>
-                        </div>
-                        <div>
-                            <h3>6</h3>
-                        </div>
-                    </Slider> */}
-                </div>
+            <Modal show={show} onHide={handleClose} className="modal-comment">
+                <button onClick={handleClose} className="toggle-close"><i className="fal fa-times"></i></button>
+                <Modal.Body>
+                    <h3>Photo</h3>
+                     <Slider {...settings} className="w-arrow">
+                        {
+                            albumPhoto.length > 0 && albumPhoto.map((item, i)=>{
+                                return (
+                                    <div className="album-photo" key={i}>
+                                        <img src={item.url} alt={item.title} className="img-fluid mb-3" />
+                                        <h4 className="mb-0">{item.title}</h4>
+                                    </div>
+                                )
+                            })
+                        }
+                    </Slider>
+                </Modal.Body>
             </Modal>
         </>
     )

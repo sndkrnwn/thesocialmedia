@@ -79,6 +79,76 @@ p, span, a, button {
     }
 }
 
+.slick-slider {
+    .slick-list {
+        .slick-track {
+            .slick-slide {
+                padding: 1rem;
+                padding-bottom: 0;
+            }
+        }
+    }
+    &.w-arrow {
+        .slick-arrow {
+            &.slick-prev {
+                background: #82CCDD;
+                height: 50px;
+                width: 50px;
+                z-index: 9;
+                left: -.5rem;
+                transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                border-radius: 50%;
+                @include media-breakpoint-down(sm) {
+                    width: 40px;
+                    height: 40px;
+                    left: 0;
+                }
+                &:hover {
+                    background: #82CCDD;
+                    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                }
+                &::before {
+                    font-family: "Font Awesome 5 Pro";
+                    font-weight: 300;
+                    content: "\f053";
+                    position: inline-block;
+                    font-size: 1.5rem;
+                    @include media-breakpoint-down(sm) {
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+            &.slick-next {
+                background: #82CCDD;
+                height: 50px;
+                width: 50px;
+                right: -.5rem;
+                transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                border-radius: 50%;
+                @include media-breakpoint-down(sm) {
+                    width: 40px;
+                    height: 40px;
+                    right: 0;
+                }
+                &:hover {
+                    background: #82CCDD;
+                    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                }
+                &::before {
+                    font-family: "Font Awesome 5 Pro";
+                    font-weight: 300;
+                    content: "\f054";
+                    position: inline-block;
+                    font-size: 1.5rem;
+                    @include media-breakpoint-down(sm) {
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+        }  
+    }
+}
+
 .btn-primary {
     background: #82CCDD;
     color: white;
