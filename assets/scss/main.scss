@@ -39,6 +39,20 @@ p, span, a, button {
     font-family: helvetica !important;
 }
 
+.btn-danger {
+    background: #b33939;
+    &:hover {
+        background: #b33939;
+    }
+}
+
+.btn-info {
+    background: #227093;
+    &:hover {
+        background: #227093;
+    }
+}
+
 .loader {
     position: fixed;
     top: 0;

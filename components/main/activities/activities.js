@@ -134,24 +134,20 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
                 centered
             >
                 <Modal.Body>
-                <div className="row">
-                    <div className="col-md-6">
-                        <button className="btn btn-danger w-100" onClick={handleSubmitRemove}>
-                            Delete
-                        </button>
-                    </div>
-                    <div className="col-md-6">
-                        <button className="btn btn-primary w-100" onClick={handleCloseModalRemove}>
-                            Close
-                        </button>
-                    </div>
+                <h3>Delete Post ?</h3>
+                <div>
+                    <button className="btn btn-danger" onClick={handleSubmitRemove}>
+                        <i className="fad fa-check"></i>
+                    </button>
+                    <button className="btn btn-info" onClick={handleCloseModalRemove}>
+                        <i className="fad fa-times"></i>
+                    </button>
                 </div>
                 </Modal.Body>
             </Modal>
             <Modal 
                 show={showModalUpdate} 
                 onHide={handleCloseUpdate} 
-                className="modal-confirm"
                 centered
             >
                 <Modal.Body>
@@ -163,7 +159,7 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
                         <div className="form-group mb-3">
                             <textarea className="form-control" rows="3" value={postTextUpdate} onChange={changePostTextUpdate} placeholder="update post here..."></textarea>
                         </div>
-                        <div className="form-group w-100 mb-3">
+                        <div className="form-group w-100">
                             <Button className="btn-primary w-100" onClick={() => { submitUpdatePost(); setTrigger(trigger+1);}}>Save & Post</Button> 
                         </div>
                     </div>

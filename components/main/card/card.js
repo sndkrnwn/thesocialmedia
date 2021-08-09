@@ -51,7 +51,7 @@ const CardProfile = ({userid, users, albums, photos}) => {
             {
                 user !== null &&
                 <>
-                <h3>{user.name}</h3>
+                <h2>{user.name}</h2>
                 <p className="mb-0">@{user.username}</p>
                 </>
             }
