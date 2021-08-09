@@ -1,5 +1,5 @@
 import * as types from "../../../redux/types"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PropTypes from "prop-types"
 import {default as UUID} from "node-uuid";
 import { Modal } from 'react-bootstrap'
@@ -7,9 +7,18 @@ import { Modal } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
-const Comments = ({postId, postTitle, postBody, comments, removeCommentPost, addComment, updateComment}) => {
+const Comments = ({userid, users, postId, postTitle, postBody, comments, removeCommentPost, addComment, updateComment}) => {
     const [trigger, setTrigger] = useState(0);
+    const [user, setUser] = useState(null)
     const [commmentId, setCommentId] = useState(0);
+
+    useEffect(()=>{
+        users.length > 0 && users.map((item, i)=>{
+            if(userid === item.id) {
+               setUser(item)
+            }
+        })
+    })
 
     //ADD COMMENT
     const [comment, setComment] = useState("");
@@ -20,8 +29,8 @@ const Comments = ({postId, postTitle, postBody, comments, removeCommentPost, add
         const data = {
             postId: postId,
             id: UUID.v4(),
-            name: "John Doe",
-            email: "admin@thesocialmedia.com",
+            name: user.name,
+            email: user.email,
             body: comment
         }
         addComment(data)
@@ -154,6 +163,8 @@ Comments.defaultProps = {
 // export default Comments
 
 const mapStateToProps = state => ({
+    userid: state.userid.userid,
+    users: state.user.users,
     comments: state.comment.comments,
 });
 
