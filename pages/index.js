@@ -46,7 +46,7 @@ export default function Home (props) {
     <>
       <div className={`loader ${loader === false && "is-close"}`}>
         <img src={Loader.src} alt="loading-image" className="img-fluid"/>
-        <button className="btn btn-outline-primary" onClick={()=>setLoader(false)}>Start</button>
+        <button className="btn outline" onClick={()=>setLoader(false)}>Start</button>
       </div>
       <div className={`main-content ${loader === false && "loaded"}`}>
         <Cover

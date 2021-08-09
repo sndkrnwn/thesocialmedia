@@ -172,6 +172,12 @@ p, span, a, button {
     }
 }
 
+.btn {
+    &.outline {
+        border: 1px solid;
+    }
+}
+
 
 .content-left {
     padding-left: 1.5rem;
