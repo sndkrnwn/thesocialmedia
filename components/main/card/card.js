@@ -22,7 +22,7 @@ const CardProfile = ({userid, users, albums, photos}) => {
 
     const [user, setUser] = useState(null);
     useEffect(()=>{
-        users.map((item, i)=>{
+        users.length > 0 && users.map((item, i)=>{
             if(userid === item.id) {
                setUser(item)
             }
@@ -124,10 +124,18 @@ const CardProfile = ({userid, users, albums, photos}) => {
 }
 
 CardProfile.propTypes = {
+    userid: PropTypes.number,
     users: PropTypes.array,
     albums: PropTypes.array,
     photos: PropTypes.array
 }
+
+CardProfile.defaultProps = {
+    userid: 1,
+    users: [],
+    albums: [],
+    photos: [],
+  }
 
 const mapStateToProps = state => ({
     userid: state.userid.userid,

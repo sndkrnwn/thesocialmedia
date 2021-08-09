@@ -2,7 +2,6 @@ import * as types from "../../../redux/types"
 import { useState } from 'react'
 import PropTypes from "prop-types"
 import {default as UUID} from "node-uuid";
-// import Modal from 'react-modal';
 import { Modal } from 'react-bootstrap'
 
 import { Button } from 'react-bootstrap'

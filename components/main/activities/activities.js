@@ -6,7 +6,6 @@ import PropTypes from "prop-types"
 import Comments from "./comments"
 import { connect } from 'react-redux'
 
-
 const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}) => {
     const [idPost, setIdPost] = useState(0);
     const [idPostUpdate, setIdPostUpdate] = useState(0);
@@ -22,7 +21,6 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
         setShowModalRemove(true);
         setIdPost(id);
     }
-
 
     //Update Popup
     const [showModalUpdate, setModalUpdate] = useState(false);
@@ -56,8 +54,6 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
         setPostDesc("")
     }
 
-
-
     //UPDATE POST
     const [postTitleUpdate, setPostTitleUpdate] = useState("");
     const [postTextUpdate, setPostTextUpdate] = useState("");
@@ -88,7 +84,6 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
         removePostUser(idPost)
     }
 
-   
     return (
         <div className="activities">
             <div className="pb-3">

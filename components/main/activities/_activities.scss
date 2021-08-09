@@ -1,3 +1,10 @@
+.sc-activities {
+    height: 100vh;
+    overflow: hidden;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
 .activities {
     margin-top: 3rem;
     .form-post {
@@ -34,6 +41,84 @@
                     background: transparent;
                     color: $black;
                     border: none;
+                }
+            }
+        }
+    }
+}
+
+.modal-comment {
+    .modal-content {
+        .toggle-close {
+            position: absolute;
+            top: .5rem;
+            right: .75rem;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            color: rgba($black,.5);
+            z-index: 1;
+        }
+    }
+    .modal-body {
+        position: relative;
+        padding: 1.5rem;
+        .user-post {
+            padding-right: 2rem;
+        }
+        .post-comment {
+            max-height: 280px;
+            overflow-y: scroll;
+            padding-top: 1rem;
+            .list-comment {
+                margin-bottom: 1rem;
+                border-bottom: 1px solid rgba($black,.15);
+                .user {
+                    span {
+                        font-weight: bold;
+                        color: rgba($black,.5);
+                    }
+                }
+                .comment {
+                    margin-bottom: 1rem;
+                    textarea {
+                        padding: 0;
+                        border: none;
+                    }
+                    textarea[readonly] {
+                        background-color: $white;
+                    }
+                }
+                .action {
+                    display: flex;
+                    justify-content: flex-end;
+                    .btn {
+                        background: transparent;
+                        color: $black;
+                        border: none;
+                    }
+                }
+            }
+        }
+        .form-comment {
+            // position: fixed;
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            background: $white;
+            padding-top: 1rem;
+            .form-group {
+                position: relative;
+                .btn-post {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    background: $cyan;
+                    color: $white;
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
                 }
             }
         }
