@@ -1,12 +1,11 @@
-import * as types from "../../../redux/types"
 import { useState, useEffect } from 'react'
 import PropTypes from "prop-types"
 import { Modal } from 'react-bootstrap'
 import Slider from "react-slick";
 import { connect } from 'react-redux'
-
 import { Card } from 'react-bootstrap';
 
+//Assets
 import Banner from "assets/img/bg/banner-card.jpg"
 
 const CardProfile = ({userid, users, albums, photos}) => {

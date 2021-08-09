@@ -3,28 +3,17 @@
     .form-post {
         .form-group {
             position: relative;
-            // .btn-post {
-            //     position: absolute;
-            //     bottom: 0;
-            //     right: 0;
-            //     background: #82CCDD;
-            //     color: white;
-            //     border-top-left-radius: 0;
-            //     border-bottom-left-radius: 0;
-            //     padding-left: 1rem;
-            //     padding-right: 1rem;
-            // }
         }
     }
     .toggle-comment {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 2px solid #82CCDD; 
+        border-bottom: 2px solid $cyan; 
         .btn {
             padding-left: 0;
             padding-right: 0;
-            color: rgba(0,0,0,.5) !important;
+            color: rgba($black,.5) !important;
             font-weight: bold;
         }
     }
@@ -36,14 +25,14 @@
         .list-post {
             margin-bottom: 1.5rem;
             p {
-                color: rgba(0,0,0,.65);
+                color: rgba($black,.65);
             }
             .action {
                 display: flex;
                 justify-content: space-between;
                 .btn {
                     background: transparent;
-                    color: black;
+                    color: $black;
                     border: none;
                 }
             }

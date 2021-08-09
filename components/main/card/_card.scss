@@ -1,16 +1,17 @@
 .card-profile {
     margin-top: 3rem;
     padding: 0;
+    overflow: hidden;
     .card-header {
-        background: white;
+        background: $white;
         padding: 1rem;
         background-size: cover !important;
-        color: white;
+        color: $white;
         border: none;
     }
     .card-body {
         h4 {
-            color: #82CCDD;
+            color: $cyan;
         }
         .list-item {
             .item {
@@ -20,15 +21,15 @@
                     display: flex;
                     align-items: center;
                     text-decoration: none;
-                    color: black;
+                    color: $black;
                 }
                 &:last-child {
                     margin-bottom: 0;
                 }
                 &:hover {
                     i {
-                        color: #82CCDD;
-                        transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                        color: $cyan;
+                        transition: $transition;
                     }
                 }
                 p {
@@ -38,31 +39,31 @@
                 i {
                     font-size: 1.75rem;
                     min-width: 50px;
-                    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                    transition: $transition;
                 }
             }
         }
     }
     .card-footer {
-        background: white;
+        background: $white;
         padding: 0;
         h4 {
-            color: #82CCDD;
+            color: $cyan;
         }
         .list-item {
             .item {
                 padding: 1rem;
                 cursor: pointer;
-                transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                transition: $transition;
                 &:nth-child(odd) {
-                    background: #f2f2f2;
+                    background: $gray-10;
                     &:hover {
-                        background: #e6e6e6;
+                        background: $gray-20;
                     }
                 }
                 &:nth-child(even) {
                     &:hover {
-                        background: #f2f2f2;
+                        background: $gray-10;
                     }
                 }
             }

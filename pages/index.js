@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-
 import { Row, Col } from 'react-bootstrap';
-import { useDispatch, useSelector, connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 //Components
 import Activities from "components/main/activities/activities"
@@ -16,11 +15,8 @@ import { fetchcomments } from 'redux/actions/commentAction';
 import { fetchalbums } from 'redux/actions/albumAction';
 import { fetchphotos } from 'redux/actions/photoAction';
 import { fetchuseractive } from 'redux/actions/userActiveAction';
-import { fetchtest } from 'redux/actions/testAction';
 
 import Loader from "assets/img/icon/loading.gif"
-
-
 
 export default function Home (props) {
   const dispatch  = useDispatch();
@@ -43,9 +39,6 @@ export default function Home (props) {
 
     //GET USER ACTIVE
     dispatch(fetchuseractive());
-
-    //Testing Store, Update
-    dispatch(fetchtest());
   }, [])
 
   const [loader, setLoader] = useState(true);

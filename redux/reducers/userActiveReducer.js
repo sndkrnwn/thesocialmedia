@@ -11,16 +11,10 @@ export const userActiveReducer = ( state = initialState, action) => {
             };
 
         case types.UPDATE_USER_ACTIVE:
-            // console.log(action.value)
             return {
                 ...state,
                 userid: action.value
             };
-
-            // return {
-            //     ...state,
-            //     test: action.payload,
-            // }
         
         default:
             return state

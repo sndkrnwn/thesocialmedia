@@ -2,12 +2,12 @@
     display: flex;
     align-items: center;
     height: 150px;
-    background: #f2f2f2;
-    border-bottom: 10px solid #82CCDD;
+    background: $gray-10;
+    border-bottom: 10px solid $cyan;
     background-size: cover !important;
     .cover-text {
         position: relative;
-        color: white;
+        color: $white;
         // z-index: 1;
     }
 }

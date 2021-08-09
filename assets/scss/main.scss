@@ -11,6 +11,7 @@
 @import "../../assets/plugins/fontawesome-pro-5.13.0/scss/fontawesome.scss";
 
 // Components
+@import "./variables";
 @import "../../components/main/card/card";
 @import "../../components/main/cover/cover";
 @import "../../components/main/users/users";
@@ -24,6 +25,10 @@
 @font-face {
     font-family: helvetica;
     src: url("../../assets/fonts/Helvetica.ttf");
+}
+
+body {
+    width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,7 +45,7 @@ p, span, a, button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: white;
+    background: $white;
     z-index: 1031;
     display: flex;
     align-items: center;
@@ -48,7 +53,7 @@ p, span, a, button {
     flex-direction: column;
     opacity: 1;
     visibility: visible;
-    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    transition: $transition;
     &.is-close {
         opacity: 0;
         visibility: hidden;
@@ -61,19 +66,19 @@ p, span, a, button {
         font-size: 1.5rem;
         padding-left: 2rem;
         padding-right: 2rem;
-        color:#82CCDD;
-        // border-color: #82CCDD;
+        color:$cyan;
+        // border-color: $cyan;
         border: none;
         &:hover {
             background: transparent;
-            text-shadow: 1px 1px 15px rgba(255,255,255, .5);;
+            text-shadow: $box-shadow;
         }
     }
 }
 
 .main-content {
     opacity: 0;
-    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    transition: $transition;
     &.loaded {
         opacity: 1;
     }
@@ -91,12 +96,12 @@ p, span, a, button {
     &.w-arrow {
         .slick-arrow {
             &.slick-prev {
-                background: #82CCDD;
+                background: $cyan;
                 height: 50px;
                 width: 50px;
                 z-index: 9;
                 left: -.5rem;
-                transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                transition: $transition;
                 border-radius: 50%;
                 @include media-breakpoint-down(sm) {
                     width: 40px;
@@ -104,8 +109,8 @@ p, span, a, button {
                     left: 0;
                 }
                 &:hover {
-                    background: #82CCDD;
-                    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                    background: $cyan;
+                    transition: $transition;
                 }
                 &::before {
                     font-family: "Font Awesome 5 Pro";
@@ -119,11 +124,11 @@ p, span, a, button {
                 }
             }
             &.slick-next {
-                background: #82CCDD;
+                background: $cyan;
                 height: 50px;
                 width: 50px;
                 right: -.5rem;
-                transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                transition: $transition;
                 border-radius: 50%;
                 @include media-breakpoint-down(sm) {
                     width: 40px;
@@ -131,8 +136,8 @@ p, span, a, button {
                     right: 0;
                 }
                 &:hover {
-                    background: #82CCDD;
-                    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                    background: $cyan;
+                    transition: $transition;
                 }
                 &::before {
                     font-family: "Font Awesome 5 Pro";
@@ -150,20 +155,29 @@ p, span, a, button {
 }
 
 .btn-primary {
-    background: #82CCDD;
-    color: white;
+    background: $cyan;
+    color: $white;
     padding-left: 1rem;
     padding-right: 1rem;
     border: transparent;
-    transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    transition: $transition;
     &:hover {
-        background: #73c6d9;
+        background: $cyan-light;
+    }
+    &:disabled {
+        background: $cyan-light;
+    }
+    &.disabled {
+        background: $cyan-light;
     }
 }
 
 
 .content-left {
-    padding-left: 3rem;
+    padding-left: 1.5rem;
+    @include media-breakpoint-up(md) {
+        padding-left: 3rem;
+    }
 }
 
 
@@ -193,24 +207,27 @@ button {
             background: transparent;
             border: none;
             font-size: 2rem;
-            color: rgba(0,0,0,.5);
+            color: rgba($black,.5);
             z-index: 1;
         }
     }
     .modal-body {
         position: relative;
         padding: 1.5rem;
+        .user-post {
+            padding-right: 2rem;
+        }
         .post-comment {
             max-height: 280px;
             overflow-y: scroll;
             padding-top: 1rem;
             .list-comment {
                 margin-bottom: 1rem;
-                border-bottom: 1px solid rgba(0,0,0,.15);
+                border-bottom: 1px solid rgba($black,.15);
                 .user {
                     span {
                         font-weight: bold;
-                        color: rgba(0,0,0,.5);
+                        color: rgba($black,.5);
                     }
                 }
                 .comment {
@@ -220,7 +237,7 @@ button {
                         border: none;
                     }
                     textarea[readonly] {
-                        background-color: white;
+                        background-color: $white;
                     }
                 }
                 .action {
@@ -228,7 +245,7 @@ button {
                     justify-content: flex-end;
                     .btn {
                         background: transparent;
-                        color: black;
+                        color: $black;
                         border: none;
                     }
                 }
@@ -239,7 +256,7 @@ button {
             left: 0;
             width: 100%;
             bottom: 0;
-            background: white;
+            background: $white;
             padding-top: 1rem;
             .form-group {
                 position: relative;
@@ -247,8 +264,8 @@ button {
                     position: absolute;
                     bottom: 0;
                     right: 0;
-                    background: #82CCDD;
-                    color: white;
+                    background: $cyan;
+                    color: $white;
                     border-top-left-radius: 0;
                     border-bottom-left-radius: 0;
                     padding-left: 1rem;

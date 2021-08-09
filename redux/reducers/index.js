@@ -6,9 +6,6 @@ import { albumReducer } from "./albumReducer"
 import { photoReducer } from "./photoReducer"
 import { userActiveReducer } from "./userActiveReducer"
 
-import { testReducer } from "./testReducer"
-
-
 export default combineReducers({
     post: postReducer,
     user: userReducer,
@@ -16,9 +13,4 @@ export default combineReducers({
     album: albumReducer,
     photo: photoReducer,
     userid: userActiveReducer,
-
-
-
-
-    test: testReducer
 });
