@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux'
 
 //Components
@@ -58,6 +58,7 @@ export default function Home (props) {
         <Cover
           title="The Social Media"
         />
+        <Container fluid>
         <Row>
           <Col md="9" className="content-left">
             <Row>
@@ -72,7 +73,8 @@ export default function Home (props) {
           <Col md="3" className={`content-right ${userMobile && "is-open"}`}>
             <Users userMobile={userMobile} setUserMobile={setUserMobile} userMobile={userMobile}/>
           </Col>
-        </Row>  
+        </Row> 
+        </Container>
       </div>
     </>
   )

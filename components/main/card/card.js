@@ -57,7 +57,10 @@ const CardProfile = ({userid, users, albums, photos}) => {
             }
             </Card.Header>
             <Card.Body>
-                <h4>Bio</h4>
+                <div className="text-header pl-0 pr-0">
+                    <h4 className="mb-0">Bio</h4>
+                    <i class="fad fa-book-user"></i>
+                </div>
                 {
                     user !== null &&
                     <div className="list-item">
@@ -85,7 +88,10 @@ const CardProfile = ({userid, users, albums, photos}) => {
                 }
             </Card.Body>
             <Card.Footer>
-                <h4 className="p-3">Album</h4>
+                <div className="text-header">
+                    <h4 className="mb-0">Album</h4>
+                    <i className="fad fa-images"></i>
+                </div>
                 <div className="list-item">
                     {
                         albums.length > 0 && albums.map((item, i)=>{

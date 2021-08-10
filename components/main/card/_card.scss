@@ -9,6 +9,9 @@
     margin-top: 3rem;
     padding: 0;
     overflow: hidden;
+    @include media-breakpoint-down(sm) {
+        margin-top: 1.5rem;
+    }
     .card-header {
         background: $white;
         padding: 1rem;
@@ -23,10 +26,11 @@
         justify-content: center;
     }
     .card-body {
-        h4 {
-            color: $cyan;
-        }
+        padding: 0;
         .list-item {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-bottom: 1rem;
             .item {
                 cursor: default;
                 margin-bottom: 1rem;
@@ -59,10 +63,7 @@
     }
     .card-footer {
         background: $white;
-        padding: 0;
-        h4 {
-            color: $cyan;
-        }
+        padding: 0;       
         .list-item {
             .item {
                 padding: 1rem;
@@ -81,5 +82,12 @@
                 }
             }
         }
+    }
+    .text-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        color: $cyan;
     }
 }

@@ -29,6 +29,9 @@
         max-height: 800px;
         overflow: hidden;
         overflow-y: scroll;
+        @include media-breakpoint-down(sm) {
+            padding-bottom: 27rem;
+        }
         .list-post {
             margin-bottom: 1.5rem;
             p {
