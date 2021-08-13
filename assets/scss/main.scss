@@ -279,6 +279,9 @@ button {
                 overflow-y: scroll;
                 padding-bottom: 2rem;
                 padding-top: 1rem;
+                @include media-breakpoint-down(sm) {
+                    padding-bottom: 5rem;
+                }
             }
         }
     }
