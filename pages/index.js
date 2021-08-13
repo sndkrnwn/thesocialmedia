@@ -47,7 +47,9 @@ export default function Home (props) {
     <>
       <div className={`loader ${loader === false && "is-close"}`}>
         <img src={Loader.src} alt="loading-image" className="img-fluid"/>
-        <button className="btn outline" onClick={()=>setLoader(false)}>Start</button>
+        <button className="btn outline" onClick={()=>setLoader(false)}>
+          <span>Start</span>
+        </button>
       </div>
       <div className="toggle-users-mobile" onClick={()=>setUserMobile(!userMobile)}>
         {

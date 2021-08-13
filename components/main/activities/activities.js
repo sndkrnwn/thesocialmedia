@@ -171,11 +171,12 @@ const Activities = ({userid, posts, removePostUser, addPostUser, updatePostUser}
   
 Activities.propTypes = {
     posts: PropTypes.array,
-    comments: PropTypes.array
-
+    comments: PropTypes.array,
+    userid: PropTypes.string
 }
 
 Activities.defaultProps = {
+    userid: 1,
     posts: [
         {
             title: "Title possss",
@@ -186,12 +187,13 @@ Activities.defaultProps = {
             body: "Description Post"
         },
     ],
+    comments: []
 }
 
 const mapStateToProps = state => ({
     userid: state.userid.userid,
     posts: state.post.posts,
-    comments: state.comment.comments,
+    // comments: state.comment.comments,
 });
 
 const mapDispatchToProps = (dispatch) => {

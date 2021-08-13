@@ -142,10 +142,15 @@ const Comments = ({userid, users, postId, postTitle, postBody, comments, removeC
 }
 
 Comments.propTypes = {
-    comments: PropTypes.array
+    comments: PropTypes.array,
+    userid: PropTypes.string,
+    users: PropTypes.array
 }
 
 Comments.defaultProps = {
+    userid: 1,
+    comments: [],
+    users: [],
     posts: [
         {
             name: "Name",

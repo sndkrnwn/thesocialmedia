@@ -29,10 +29,14 @@ const Users = ({setUserMobile, userMobile, users, userid, updateUserActive}) => 
 }
 
 Users.propTypes = {
-    users: PropTypes.array
+    users: PropTypes.array,
+    userid: PropTypes.string
 }
 
 Users.defaultProps = {
+    userid: {
+        userid: 1
+    },
     users: [
         {
             name: "jane",
